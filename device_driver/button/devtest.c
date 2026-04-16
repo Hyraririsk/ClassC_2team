@@ -37,7 +37,7 @@ static volatile unsigned long gpio_base;
 static struct resource *gpio_mem;
 #endif
 
-#define GPIO_KEY 17
+#define GPIO_KEY 18
 int irq_key;
 static int irq_enabled = 0;
 static atomic_t pressed = ATOMIC_INIT(0);
@@ -113,13 +113,11 @@ static ssize_t device_read(struct file *filp, char __user *buf, size_t count, lo
 	ssize_t rlen = 1; 
 	char readBuf[1] = {1};
 
-	printk("devtest: device_read (minor = %d)\n", iminor(filp->f_path.dentry->d_inode));
 	if(rlen > count) {
 		rlen = count;
 	}
 	wait_event_interruptible(my_waitqueue, atomic_read(&pressed));
 	atomic_set(&pressed, 0);
-	printk("button is pressed!");
 	if(copy_to_user(buf, readBuf, rlen)) {
 		return -EFAULT;
 	}	
@@ -169,7 +167,6 @@ static const struct file_operations my_fops = {
 irqreturn_t key_isr(int irq, void *dev_id)
 {
 	atomic_set(&pressed, 1);
-	printk("[byeongsu] key isr is handled");
 	wake_up_interruptible(&my_waitqueue);
 	return IRQ_HANDLED;
 }
