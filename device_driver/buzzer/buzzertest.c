@@ -130,7 +130,7 @@ void play_crazy_arcade(void) {
 	const static unsigned int note2msecOfCrazyArcade[] = {CARZY_BASE/3, CARZY_BASE/2, CARZY_BASE, CARZY_BASE*1.5, CARZY_BASE*3};
 
 	printk("buzzertest: playing crazy arcade\n");
-	static const char *crazy_notes = "MDOBQCOCRCQCOCMCLBMBLBMBOCLCHE";
+	static const char *crazy_notes = "MDOBQCOCRCQCOCMCLBMBLBMBOCLCHEsDHCMDOBQCOCRCQCOCMCLBMBLBMBOCLCME";
 
 	while (crazy_notes[i] && crazy_notes[i + 1]) {
 		char tone = crazy_notes[i];
