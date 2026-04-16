@@ -96,7 +96,7 @@ void play_super_mario(void) {
 	const static unsigned int note2msecOfMario[] = {MARIO_BASE / 3, MARIO_BASE / 2, MARIO_BASE, BASE*1.5, BASE*3};
 
 	printk("buzzer: playing super mario\n");
-	static const char *mario_notes = "QBQBsBQBsBMBQBTBsCHBsCMCsCHBsCJCLBLBJCHBQBTBVBVBsARBTBQBMBOBLB";
+	static const char *mario_notes = "QBQBsBQBsBMBQCTCsCHCsCMBMAHBHAEBsAJCLCKCJCHBEBEAJCFBHBsAQCMBOBLCsA";
 
 	while (mario_notes[i] && mario_notes[i + 1]) {
 
